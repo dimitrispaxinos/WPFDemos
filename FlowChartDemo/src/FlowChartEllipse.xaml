@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="ProgressChartSample.FlowChartEllipse" x:Name="ProgressCircleControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Width="30">
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+        <Ellipse x:Name="Ellipse" Fill="White" 
+                  Height="30"
+                  Width="30"
+                  StrokeThickness="3">
+            <Ellipse.Resources>
+                <Style TargetType="Ellipse">
+                    <Setter Property="Stroke" Value="Orange"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Status, ElementName=ProgressCircleControl}" Value="IsFuture">
+                            <Setter Property="Stroke" Value="LightGray"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Ellipse.Resources>
+        </Ellipse>
+        <Grid HorizontalAlignment="Center" Background="LightGreen">
+            <Canvas HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="30" x:Name="Canvas" Background="Yellow" >
+                <TextBlock Text="{Binding ElementName=ProgressCircleControl, Path=Content}" HorizontalAlignment="Center" x:Name="TextBlock">
+                    <TextBlock.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Foreground" Value="LightGray"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Status, ElementName=ProgressCircleControl}" Value="IsCurrent">
+                                    <Setter Property="Foreground" Value="Black"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Resources>
+                </TextBlock>
+            </Canvas>
+        </Grid>
+    </StackPanel>
+</UserControl>
+
