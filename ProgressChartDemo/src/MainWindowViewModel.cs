@@ -11,19 +11,19 @@ namespace ProgressChartSample
     {
         public MainWindowViewModel()
         {
-            CurrentStatus = StatusesEnum.Completed;
+            CurrentStatus = BlogPostStatusEnum.Written;
         }
 
-        public IEnumerable<StatusesEnum> AvailableStatuses
+        public IEnumerable<BlogPostStatusEnum> AvailableStatuses
         {
             get
             {
-                return Enum.GetValues(typeof(StatusesEnum)).Cast<StatusesEnum>().ToList();
+                return Enum.GetValues(typeof(BlogPostStatusEnum)).Cast<BlogPostStatusEnum>().ToList();
             }
         }
 
-        private StatusesEnum _currentStatus;
-        public StatusesEnum CurrentStatus
+        private BlogPostStatusEnum _currentStatus;
+        public BlogPostStatusEnum CurrentStatus
         {
             get
             {

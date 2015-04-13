@@ -4,9 +4,9 @@ using System.Windows.Controls;
 namespace ProgressChartSample
 {
     /// <summary>
-    /// Interaction logic for ProgressChartEllipse.xaml
+    /// Interaction logic for FlowChartEllipse.xaml
     /// </summary>
-    public partial class ProgressChartEllipse : UserControl
+    public partial class FlowChartEllipse
     {
         public string Status
         {
@@ -14,7 +14,10 @@ namespace ProgressChartSample
             set { SetValue(StatusProperty, value); }
         }
 
-        public static readonly DependencyProperty StatusProperty = DependencyProperty.Register("Status", typeof(string), typeof(ProgressChartEllipse));
+        public static readonly DependencyProperty StatusProperty = DependencyProperty.Register(
+            "Status",
+            typeof(string),
+            typeof(FlowChartEllipse));
 
         public string Content
         {
@@ -22,17 +25,19 @@ namespace ProgressChartSample
             set { SetValue(ContentProperty, value); }
         }
 
-        public static readonly DependencyProperty ContentProperty = DependencyProperty.Register("Content", typeof(string), typeof(ProgressChartEllipse));
+        public static readonly DependencyProperty ContentProperty = DependencyProperty.Register(
+            "Content",
+            typeof(string),
+            typeof(FlowChartEllipse));
 
-        public ProgressChartEllipse()
+        public FlowChartEllipse()
         {
             InitializeComponent();
             Loaded += ProgressCircle_Loaded;
         }
 
-        void ProgressCircle_Loaded(object sender, RoutedEventArgs e)
+        private void ProgressCircle_Loaded(object sender, RoutedEventArgs e)
         {
-            var width = Canvas.ActualWidth;
             double left = (Canvas.ActualWidth - TextBlock.ActualWidth) / 2;
             Canvas.SetLeft(TextBlock, left);
         }

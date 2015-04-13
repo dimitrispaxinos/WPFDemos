@@ -7,37 +7,66 @@ using System.Windows.Media.Animation;
 
 namespace ProgressChartSample
 {
-    public class ProgressChartControl : UserControl
+    public class FlowChartControl : UserControl
     {
         private StackPanel StackPanel = new StackPanel() { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center, HorizontalAlignment = System.Windows.HorizontalAlignment.Center };
 
+
+        private int transitionDuration = 500;
         private int MainOpacity = 0;
 
-        public Type StatusEnum
+        public Type AvailableStatuses
         {
-            get { return (Type)GetValue(StatusEnumProperty); }
-            set { SetValue(StatusEnumProperty, value); }
+            get { return (Type)GetValue(AvailableStatusesProperty); }
+            set { SetValue(AvailableStatusesProperty, value); }
         }
 
-        public static readonly DependencyProperty StatusEnumProperty = DependencyProperty.Register("StatusEnum", typeof(Type), typeof(ProgressChartControl));
+        public static readonly DependencyProperty AvailableStatusesProperty = DependencyProperty.Register(
+            "AvailableStatuses",
+            typeof(Type),
+            typeof(FlowChartControl));
         public bool Animate
         {
             get { return (bool)GetValue(AnimateProperty); }
             set { SetValue(AnimateProperty, value); }
         }
 
-        public static readonly DependencyProperty AnimateProperty = DependencyProperty.Register("Animate", typeof(bool), typeof(ProgressChartControl));
+        public static readonly DependencyProperty AnimateProperty = DependencyProperty.Register(
+            "Animate",
+            typeof(bool),
+            typeof(FlowChartControl));
         public object CurrentStatus
         {
             get { return (object)GetValue(CurrentStatusProperty); }
             set { SetValue(CurrentStatusProperty, value); }
         }
 
-        public static readonly DependencyProperty CurrentStatusProperty = DependencyProperty.Register("CurrentStatus", typeof(object), typeof(ProgressChartControl), new PropertyMetadata(CurrentStatusCahnagedCallBack));
+        public static readonly DependencyProperty CurrentStatusProperty = DependencyProperty.Register(
+            "CurrentStatus",
+            typeof(object),
+            typeof(FlowChartControl),
+            new PropertyMetadata(CurrentStatusCahnagedCallBack));
+
+        public FlowChartControl()
+        {
+            AddChild(StackPanel);
+        }
+
+        public static IEnumerable<object> GetEnumObjects(Type enumType)
+        {
+            var values = Enum.GetNames(enumType);
+            var list = new List<object>();
+
+            foreach (var value in values)
+            {
+                list.Add(Enum.Parse(enumType, value));
+            }
+            return list;
+        }
 
         private static void CurrentStatusCahnagedCallBack(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var instance = d as ProgressChartControl;
+            var instance = d as FlowChartControl;
             if (instance != null)
             {
                 instance.StackPanel.Children.Clear();
@@ -55,18 +84,13 @@ namespace ProgressChartSample
             }
         }
 
-        public ProgressChartControl()
-        {
-            this.AddChild(StackPanel);
-        }
-
         private void CreateChart()
         {
-            var statuses = GetEnumObjects(StatusEnum);
+            var statuses = GetEnumObjects(AvailableStatuses);
 
             foreach (var status in statuses)
             {
-                var circle = new ProgressChartEllipse() { Opacity = MainOpacity };
+                var circle = new FlowChartEllipse() { Opacity = MainOpacity };
                 circle.Content = status.ToString();
                 circle.Name = status.ToString();
 
@@ -81,7 +105,7 @@ namespace ProgressChartSample
 
                 if ((int)status != statuses.Cast<int>().Max())
                 {
-                    var line = new ProgressChartLine() { Opacity = MainOpacity };
+                    var line = new FlowChartLine() { Opacity = MainOpacity };
                     line.Name = status + "Line";
                     if ((int)CurrentStatus > (int)status)
                         line.IsPast = true;
@@ -92,8 +116,6 @@ namespace ProgressChartSample
 
         private Storyboard CreateStoryBoard()
         {
-            var duration = 500;
-
             var sb = new Storyboard();
 
             var beginTime = 0;
@@ -105,30 +127,18 @@ namespace ProgressChartSample
                 var animation = new DoubleAnimation()
                 {
                     BeginTime = TimeSpan.FromMilliseconds(beginTime),
-                    Duration = TimeSpan.FromMilliseconds(duration),
+                    Duration = TimeSpan.FromMilliseconds(transitionDuration),
                     From = 0,
                     To = 1
                 };
                 animation.From = 0;
                 animation.To = 1;
-                beginTime = beginTime + duration;
+                beginTime = beginTime + transitionDuration;
                 Storyboard.SetTarget(animation, (UserControl)child);
                 Storyboard.SetTargetProperty(animation, new PropertyPath(OpacityProperty));
                 sb.Children.Add(animation);
             }
             return sb;
-        }
-
-        public static IEnumerable<object> GetEnumObjects(Type enumType)
-        {
-            var values = Enum.GetNames(enumType);
-            List<object> list = new List<object>();
-
-            foreach (var value in values)
-            {
-                list.Add(Enum.Parse(enumType, value));
-            }
-            return list;
         }
     }
 }

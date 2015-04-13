@@ -4,9 +4,9 @@ using System.Windows.Controls;
 namespace ProgressChartSample
 {
     /// <summary>
-    /// Interaction logic for ProgressChartLine.xaml
+    /// Interaction logic for FlowChartLine.xaml
     /// </summary>
-    public partial class ProgressChartLine : UserControl
+    public partial class FlowChartLine : UserControl
     {
         public bool IsPast
         {
@@ -14,9 +14,9 @@ namespace ProgressChartSample
             set { SetValue(IsPastProperty, value); }
         }
 
-        public static readonly DependencyProperty IsPastProperty = DependencyProperty.Register("IsPast", typeof(bool), typeof(ProgressChartLine));
+        public static readonly DependencyProperty IsPastProperty = DependencyProperty.Register("IsPast", typeof(bool), typeof(FlowChartLine));
 
-        public ProgressChartLine()
+        public FlowChartLine()
         {
             InitializeComponent();
         }

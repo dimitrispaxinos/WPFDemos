@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="ProgressChartSample.ProgressChartLine" x:Name="ProgressLineControl"
+﻿<UserControl x:Class="ProgressChartSample.FlowChartLine" x:Name="ProgressLineControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Line   X1="0" Y1="15"
