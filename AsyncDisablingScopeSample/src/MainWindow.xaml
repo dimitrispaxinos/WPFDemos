@@ -1,0 +1,16 @@
+﻿<Window x:Class="AsyncDisablingScopeSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AsyncDisablingScope Sample" Height="350" Width="525"
+        DataContext="{StaticResource MainWindowViewModel}">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Content="Add" Command="{Binding AddCommand}"/>
+        <Button Grid.Row="1" Content="Remove" Command="{Binding RemoveCommand}"/>
+        <Button Grid.Row="2" Content="Update" Command="{Binding UpdateCommand}"/>
+    </Grid>
+</Window>
