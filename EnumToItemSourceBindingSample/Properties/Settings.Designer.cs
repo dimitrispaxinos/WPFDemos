@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProgressChartSample.Properties
+namespace EnumToItemSourceBindingSample.Properties
 {
 
 

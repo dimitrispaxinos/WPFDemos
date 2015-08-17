@@ -1,9 +1,8 @@
-﻿<Application x:Class="ProgressChartSample.App"
+﻿<Application x:Class="EnumToItemSourceBindingSample.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:progressChartSample="clr-namespace:ProgressChartSample"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         <progressChartSample:MainWindowViewModel x:Key="MainWindowViewModel"/>
+         
     </Application.Resources>
 </Application>

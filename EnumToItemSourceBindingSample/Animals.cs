@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProgressChartSample
+namespace EnumToItemSourceBindingSample
 {
-    public enum OneMoreEnum
+    public enum Animals
     {
-        Status1 = 1,
-        Status2 = 2,
-        Status3 = 3
+        Cat,
+        Dog,
+        Horse,
+        Lion,
+        Turtle
     }
 }
