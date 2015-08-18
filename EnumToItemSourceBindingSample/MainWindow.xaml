@@ -14,7 +14,6 @@
                   MinWidth="200"
                   MinHeight="25"
                   FontSize="15"
-                  ItemsSource="{enumToItemSourceBindingSample:EnumToItemsSourceExtension {x:Type enumToItemSourceBindingSample:Animals }}"
-                  DisplayMemberPath="Value"/>
+                  ItemsSource="{enumToItemSourceBindingSample:EnumToItemsSourceExtension {x:Type enumToItemSourceBindingSample:Animals }}"/>
     </Grid>
 </Window>
