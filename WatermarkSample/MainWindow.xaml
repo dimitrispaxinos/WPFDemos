@@ -25,8 +25,8 @@
                 <TextBox Width="250" Height="35"
                          Visibility="{Binding IsTextBoxVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
                     <i:Interaction.Behaviors>
-                        <behaviors:TextBoxWatermarkBehavior Label="{Binding TextBoxWatermark, UpdateSourceTrigger=PropertyChanged}" 
-                                                            LabelStyle="{DynamicResource WatermarkStyle}" />
+                        <behaviors:TextBoxWatermarkBehavior Label="{Binding TextBoxWatermark}" 
+                                                            LabelStyle="{StaticResource WatermarkStyle}" />
                     </i:Interaction.Behaviors>
                 </TextBox>
             </StackPanel>
@@ -39,8 +39,8 @@
                 <ComboBox Width="250" Height="35"
                          Visibility="{Binding IsComboBoxVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
                     <i:Interaction.Behaviors>
-                        <behaviors:ComboBoxWatermarkBehavior Label="{Binding ComboBoxWatermark, UpdateSourceTrigger=PropertyChanged}" 
-                                                             LabelStyle="{DynamicResource WatermarkStyle}" />
+                        <behaviors:ComboBoxWatermarkBehavior Label="{Binding ComboBoxWatermark}" 
+                                                             LabelStyle="{StaticResource WatermarkStyle}" />
                     </i:Interaction.Behaviors>
                 </ComboBox>
             </StackPanel>
@@ -53,8 +53,8 @@
                 <PasswordBox Width="250" Height="35"
                          Visibility="{Binding IsPasswordBoxVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
                     <i:Interaction.Behaviors>
-                        <behaviors:PasswordBoxWatermarkBehavior Label="{Binding PasswordBoxWatermark, UpdateSourceTrigger=PropertyChanged}" 
-                                                                LabelStyle="{DynamicResource WatermarkStyle}" />
+                        <behaviors:PasswordBoxWatermarkBehavior Label="{Binding PasswordBoxWatermark}" 
+                                                                LabelStyle="{StaticResource WatermarkStyle}" />
                     </i:Interaction.Behaviors>
                 </PasswordBox>
             </StackPanel>

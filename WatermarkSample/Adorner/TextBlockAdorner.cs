@@ -8,11 +8,11 @@ namespace WatermarkSample.Adorner
     {
         public readonly TextBlock adornerTextBlock;
 
-        public TextBlockAdorner(UIElement adornedElement, string label, Style labelStyle)
-            : base(adornedElement)
-        {
-            adornerTextBlock = new TextBlock { Style = labelStyle, Text = label };
-        }
+        //public TextBlockAdorner(UIElement adornedElement, string label, Style labelStyle)
+        //    : base(adornedElement)
+        //{
+        //    adornerTextBlock = new TextBlock { Style = labelStyle, Text = label };
+        //}
 
         public TextBlockAdorner(UIElement adornedElement, Style labelStyle)
             : base(adornedElement)

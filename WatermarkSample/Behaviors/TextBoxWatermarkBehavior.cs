@@ -72,13 +72,16 @@ namespace WatermarkSample.Behaviors
             Binding binding = new Binding();
             binding.Source = this;
             binding.Path = new PropertyPath("Label");
+
+            //binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+
             adorner.adornerTextBlock.SetBinding(TextBlock.TextProperty, binding);
 
             UpdateAdorner();
 
             //AddValueChanged for IsFocused in a weak manner
             notifier = new WeakPropertyChangeNotifier(AssociatedObject, UIElement.IsFocusedProperty);
-            notifier.ValueChanged += new EventHandler(UpdateAdorner);
+            notifier.ValueChanged += UpdateAdorner;
         }
 
         private void UpdateAdorner(object sender, EventArgs e)

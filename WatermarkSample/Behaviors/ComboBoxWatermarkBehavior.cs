@@ -77,7 +77,7 @@ namespace WatermarkSample.Behaviors
 
             //AddValueChanged for IsFocused in a weak manner
             this.notifier = new WeakPropertyChangeNotifier(this.AssociatedObject, UIElement.IsFocusedProperty);
-            this.notifier.ValueChanged += new EventHandler(this.UpdateAdorner);
+            this.notifier.ValueChanged += this.UpdateAdorner;
         }
 
         private void UpdateAdorner(object sender, EventArgs e)
